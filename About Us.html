@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us - SDGs CyberSec</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e63946",
+                        "secondary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#192633",
+                        "surface-dark-hover": "#233648"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/30">
+<header class="sticky top-0 z-50 w-full border-b border-[#233648] bg-[#111a22]/90 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between">
+<a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">shield_lock</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-white">Cyber Security</span>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="Why this Topic.html">選題原因</a>
+<a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="Data Security & Digital Transformation.html">數據安全</a>
+<div class="relative group h-16 flex items-center">
+<a href="OWASP.html" class="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white transition-colors focus:outline-none">
+                            OWASP
+                            <span class="material-symbols-outlined text-sm pt-0.5">expand_more</span>
+</a>
+<div class="absolute top-full left-0 w-56 pt-2 hidden group-hover:block animate-in fade-in slide-in-from-top-2">
+<div class="bg-surface-dark border border-[#324d67] rounded-lg shadow-xl overflow-hidden py-1">
+<a class="block px-4 py-2 text-sm text-slate-300 hover:bg-primary/10 hover:text-primary" href="Broken Access Control.html">存取控制漏洞</a>
+<a class="block px-4 py-2 text-sm text-slate-300 hover:bg-primary/10 hover:text-primary" href="SQL Injection.html">SQL 注入攻擊</a>
+<a class="block px-4 py-2 text-sm text-slate-300 hover:bg-primary/10 hover:text-primary" href="XSS Injection.html">XSS 跨站腳本</a>
+</div>
+</div>
+</div>
+<a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="Message Board.html">留言板</a>
+</nav>
+<div class="flex items-center gap-4">
+<a href="Contact Us.html" class="hidden md:flex h-9 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-white shadow hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#111a22]">
+                    聯絡我們
+                </a>
+<button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-full text-slate-300 hover:text-white hover:bg-surface-dark-hover transition-colors">
+<span class="material-symbols-outlined text-xl">dark_mode</span>
+</button>
+<button class="md:hidden p-2 text-slate-300 hover:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<div class="relative overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
+<div class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-surface-dark/50 backdrop-blur-sm px-4 py-1.5 mb-8">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-semibold text-slate-300 uppercase tracking-wider">專案倡議</span>
+</div>
+<h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-slate-700 dark:text-white tracking-tight mb-6">
+                    保護我們的<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">數位未來</span>
+</h1>
+<p class="text-xl text-slate-400 font-body leading-relaxed max-w-2xl mx-auto">
+                    我們連結網路安全教育與永續發展目標，為每個人打造具韌性的數位基礎設施。
+                </p>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="relative bg-transparent border border-[#233648] rounded-2xl p-8 aspect-square flex flex-col items-center justify-center overflow-hidden group">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')] opacity-5"></div>
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700"></div>
+<div class="grid grid-cols-2 gap-4 relative z-10 w-full max-w-xs">
+<div class="bg-transparent border border-slate-700 p-6 rounded-xl flex flex-col items-center gap-3 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-4xl text-orange-400">lightbulb</span>
+<span class="text-xs font-mono text-slate-700 dark:text-white text-center">目標 9：創新</span>
+</div>
+<div class="bg-transparent border border-slate-700 p-6 rounded-xl flex flex-col items-center gap-3 hover:border-primary/50 transition-colors translate-y-4">
+<span class="material-symbols-outlined text-4xl text-blue-400">gavel</span>
+<span class="text-xs font-mono text-slate-700 dark:text-white text-center">目標 16：正義</span>
+</div>
+<div class="bg-transparent border border-slate-700 p-6 rounded-xl flex flex-col items-center gap-3 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-4xl text-green-400">school</span>
+<span class="text-xs font-mono text-slate-700 dark:text-white text-center">目標 4：教育</span>
+</div>
+<div class="bg-transparent border border-slate-700 p-6 rounded-xl flex flex-col items-center gap-3 hover:border-primary/50 transition-colors translate-y-4">
+<span class="material-symbols-outlined text-4xl text-primary">security</span>
+<span class="text-xs font-mono text-slate-700 dark:text-white text-center">數位安全</span>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 space-y-8 font-body">
+<h2 class="text-3xl lg:text-4xl font-bold text-slate-700 dark:text-white font-display">
+                        我們的使命
+                    </h2>
+<div class="space-y-6 text-slate-700 dark:text-white leading-relaxed text-lg">
+<p>
+                            在日益互聯的世界中，數位安全不再只是技術問題——它是永續發展的基本支柱。 
+                        </p>
+<p>
+                            <strong class="text-slate-900 dark:text-white">SDGs CyberSec</strong> 倡議建立在一個信念上：強健的數位基礎設施（SDG 9）和強大的機構（SDG 16）無法在沒有安全性的情況下存在。網路攻擊會破壞信任、中斷基本服務並危及個人資料。
+                        </p>
+<p>
+                            我們的平台作為開放的教育資源，揭開 OWASP 漏洞等複雜主題的神秘面紗，賦能開發者、學生和組織建構更安全的網路技術。
+                        </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<div class="flex items-center gap-3">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl">check</span>
+</span>
+<span class="text-slate-700 dark:text-white font-medium">開源教育</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl">check</span>
+</span>
+<span class="text-slate-700 dark:text-white font-medium">道德準則</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-transparent border-y border-[#233648] relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+<div class="max-w-3xl mx-auto text-center mb-16">
+<h2 class="text-3xl font-bold text-slate-700 dark:text-white mb-4">幕後團隊</h2>
+<p class="text-slate-700 dark:text-slate-400">
+                        本專案由熱衷於網路安全與社會影響交集的人士維護。
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+<div class="bg-transparent border border-[#233648] rounded-xl p-8 hover:border-primary/30 transition-all group">
+<div class="flex items-start gap-6">
+<div class="relative flex-shrink-0">
+<div class="w-20 h-20 rounded-full bg-transparent from-slate-700 to-slate-800 flex items-center justify-center overflow-hidden border-2 border-slate-600 group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-4xl text-slate-700 dark:text-slate-400">person</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white border-2 border-[#101922]">
+<span class="material-symbols-outlined text-[12px]">code</span>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark : text-slate-700 dark:text-white">Slime BVS</h3>
+<p class="text-primary text-sm font-medium mb-3">首席開發者兼創辦人</p>
+<p class="text-slate-400 text-sm leading-relaxed">
+                                    一位熱衷於道德駭客的網路安全分析師和網頁開發者。SlimeBVS 創建了這個平台，使安全概念對初學者更易理解，同時倡導更安全的數位公共空間。
+                                </p>
+<div class="flex gap-3 mt-4">
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-lg">link</span></a>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-transparent border border-[#233648] rounded-xl p-8 hover:border-primary/30 transition-all group">
+<div class="flex items-start gap-6">
+<div class="relative flex-shrink-0">
+<div class="w-20 h-20 rounded-full bg-transparent from-slate-700 to-slate-800 flex items-center justify-center overflow-hidden border-2 border-slate-600 group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-4xl text-slate-700 dark:text-slate-400">groups</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white border-2 border-[#101922]">
+<span class="material-symbols-outlined text-[12px]">favorite</span>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">開放社群</h3>
+<p class="text-blue-500 text-sm font-medium mb-3">貢獻者與顧問</p>
+<p class="text-slate-400 text-sm leading-relaxed">
+                                    我們仰賴開源安全社群和 SDG 倡導者的見解。內容由同儕審查，以確保準確性和與當前網路標準的相關性。
+                                </p>
+<button class="text-sm text-slate-700 dark:text-slate-400 border-b border-primary pb-0.5 mt-4 hover:opacity-80 transition-opacity">
+                                    加入行動
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+<h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-10 text-center font-display">核心價值</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-2xl bg-surface-dark/50 border border-transparent hover:border-slate-700 transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4">public</span>
+<h4 class="text-lg font-bold text-white mb-2">可及性</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm">安全知識不應被封閉。我們為所有人提供免費、易於理解的資源。</p>
+</div>
+<div class="p-6 rounded-2xl bg-surface-dark/50 border border-transparent hover:border-slate-700 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">verified</span>
+<h4 class="text-lg font-bold text-white mb-2">誠信</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm">我們教授防禦性安全。我們的工具和教學旨在建構、保護和加固。</p>
+</div>
+<div class="p-6 rounded-2xl bg-surface-dark/50 border border-transparent hover:border-slate-700 transition-colors">
+<span class="material-symbols-outlined text-4xl text-orange-400 mb-4">rocket_launch</span>
+<h4 class="text-lg font-bold text-white mb-2">進步</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm">與 SDG 保持一致，確保技術在不損害安全的情況下推進人類發展。</p>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+<div class="rounded-2xl bg-gradient-to-r from-primary/20 to-transparent border border-primary/30 p-10 md:p-16 text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+<div class="relative z-10">
+<h3 class="text-3xl font-bold text-slate-800 dark:text-white mb-4">有問題或建議嗎？</h3>
+<p class="text-slate-700 dark:text-slate-400 max-w-2xl mx-auto mb-8">
+                        無論您是學生、專業人士，還是只是好奇，我們都很樂意聽到您的聲音。
+                    </p>
+<button class="h-12 px-8 rounded-lg bg-primary text-white font-bold text-sm hover:bg-red-600 transition-all inline-flex items-center gap-2 shadow-lg shadow-primary/20" onclick="window.location.href='Contact Us.html'">
+<span class="material-symbols-outlined text-lg">send</span>
+<span>聯絡我們</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-[#233648] bg-[#111a22] py-8 mt-auto">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500">verified_user</span>
+<p class="text-sm text-slate-500">© 2025 此網站屬於 319123 施英彥</p>
+</div>
+<div class="flex gap-6">
+<a class="text-sm text-slate-400 hover:text-white" href="#">隱私政策</a>
+<a class="text-sm text-slate-400 hover:text-white" href="#">服務條款</a>
+<a class="text-sm text-slate-400 hover:text-white" href="#">Cookie 設定</a>
+</div>
+</div>
+</footer>
+
+<script>
+// Theme toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check for saved theme preference or default to dark mode
+    if (localStorage.theme === 'light') {
+        html.classList.remove('dark');
+        themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-xl">light_mode</span>';
+    } else if (localStorage.theme === 'dark' || !('theme' in localStorage)) {
+        html.classList.add('dark');
+        themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-xl">dark_mode</span>';
+    }
+
+    // Toggle theme on button click
+    themeToggleBtn.addEventListener('click', () => {
+        html.classList.toggle('dark');
+
+        if (html.classList.contains('dark')) {
+            localStorage.theme = 'dark';
+            themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-xl">dark_mode</span>';
+        } else {
+            localStorage.theme = 'light';
+            themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-xl">light_mode</span>';
+        }
+    });
+});
+</script>
+</body></html>

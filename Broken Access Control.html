@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Broken Access Control - SDGs CyberSec</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e63946", // Changed to a red/alert tone for vulnerability
+                        "secondary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#192633",
+                        "surface-dark-hover": "#233648"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/30">
+<header class="sticky top-0 z-50 w-full border-b border-[#233648] bg-[#111a22]/90 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between">
+<a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">shield_lock</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-white">Cyber Security</span>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="Why this Topic.html">選題原因</a>
+<a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="Data Security & Digital Transformation.html">數據安全</a>
+<div class="relative group h-16 flex items-center">
+<a href="OWASP.html" class="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white transition-colors focus:outline-none">
+                            OWASP
+                            <span class="material-symbols-outlined text-sm pt-0.5">expand_more</span>
+</a>
+<div class="absolute top-full left-0 w-56 pt-2 hidden group-hover:block animate-in fade-in slide-in-from-top-2">
+<div class="bg-surface-dark border border-[#324d67] rounded-lg shadow-xl overflow-hidden py-1">
+<a class="block px-4 py-2 text-sm text-slate-300 hover:bg-primary/10 hover:text-primary" href="Broken Access Control.html">存取控制漏洞</a>
+<a class="block px-4 py-2 text-sm text-slate-300 hover:bg-primary/10 hover:text-primary" href="SQL Injection.html">SQL 注入攻擊</a>
+<a class="block px-4 py-2 text-sm text-slate-300 hover:bg-primary/10 hover:text-primary" href="XSS Injection.html">XSS 跨站腳本</a>
+</div>
+</div>
+</div>
+<a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="Message Board.html">留言板</a>
+</nav>
+<div class="flex items-center gap-4">
+<a href="Contact Us.html" class="hidden md:flex h-9 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-white shadow hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#111a22]">
+                    聯絡我們
+                </a>
+<button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-full text-slate-300 hover:text-white hover:bg-surface-dark-hover transition-colors">
+<span class="material-symbols-outlined text-xl">dark_mode</span>
+</button>
+<button class="md:hidden p-2 text-slate-300 hover:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+<div class="max-w-3xl mb-16">
+<div class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 mb-6">
+<span class="material-symbols-outlined text-primary text-sm">warning</span>
+<span class="text-xs font-semibold text-primary uppercase tracking-wide">OWASP Top 10: #1 Risk</span>
+</div>
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-600 dark:text-white tracking-tight mb-6">
+                破損的<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">存取控制</span>
+</h1>
+<p class="text-xl text-slate-400 font-body leading-relaxed">
+                存取控制執行政策，使用戶無法在其預期權限之外行動。失效會導致未經授權的資訊洩露、修改或銷毀所有資料。
+            </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+<div class="lg:col-span-7 space-y-8 font-body">
+<div class="bg-transparent border border-[#233648] rounded-2xl p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+<h2 class="text-2xl font-bold text-slate-700 dark:text-slate-100 mb-4 flex items-center gap-3 font-display">
+<span class="flex items-center justify-center h-8 w-8 rounded bg-primary/20 text-primary">
+<span class="material-symbols-outlined  text-lg">lock_open</span>
+</span >
+                        核心概念
+                    </h2>
+<div class="space-y-4 text-slate-500 dark:text-slate-300 leading-relaxed">
+<p>
+                            存取控制（通常稱為授權）是網頁應用程式如何授予某些用戶存取內容和功能的權限，同時拒絕其他人。這些檢查在身份驗證之後執行。
+                        </p>
+<p>
+<strong>破損的存取控制</strong>漏洞存在於當用戶實際上可以存取某些資源或執行他們不應該能夠存取的某些操作時。由於其普遍性，它在 OWASP Top 10 2021 清單中躍升至第一位。
+                        </p>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 font-display">常見攻擊向量</h3>
+<p class="text-slate-900 dark:text-slate-400 leading-relaxed mb-4">
+                        攻擊者可以利用這些缺陷存取未經授權的資料或功能。以下是典型的表現形式：
+                    </p>
+<ul class="space-y-4 mt-6">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">link_off</span>
+<div>
+<strong class="text-slate-600 block dark:text-white"> 不安全直接物件參考 (IDOR)</strong>
+<span class="text-slate-400 text-sm">操控 URL ID (e.g., <code>/user/123</code> to <code>/user/124</code>) 在未驗證的情況下查看其他用戶的個人資料。</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">admin_panel_settings</span>
+<div>
+<strong class="text-slate-600 dark:text-white block">特權提升</strong>
+<span class="text-slate-400 text-sm">以一般使用者身份登入時，透過操控隱藏欄位或 API 端點來取得管理員角色。</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">travel_explore</span>
+<div>
+<strong class="text-slate-600 dark:text-white block">強制瀏覽</strong>
+<span class="text-slate-400 text-sm">直接透過猜測 URL (e.g., <code>/admin</code>) 存取受限頁面，跳過登入或選單導航。</span>
+</div>
+</li>
+</ul>
+</div>
+<div class="border-l-4 border-primary pl-6 py-2 my-8">
+<p class="text-lg italic text-red-400 dark:text-red-400 font-medium">
+                        "如果只需更改 URL 中的 ID 就能查看他人的報稅表，那就是存取控制失效。這雖然簡單，卻危害極大。"
+                    </p>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="relative h-96 rounded-2xl overflow-hidden border border-[#233648] group bg-transparent">
+<div class="absolute inset-0 flex items-center justify-center opacity-20">
+<div class="w-64 h-64 rounded-full border-2 border-red-500/50 animate-[spin_10s_linear_infinite]"></div>
+<div class="w-48 h-48 rounded-full border border-dashed border-orange-400 absolute animate-[spin_15s_linear_infinite_reverse]"></div>
+<div class="w-32 h-32 rounded-full border border-slate-500 absolute"></div>
+<div class="absolute text-primary">
+<span class="material-symbols-outlined text-6xl">no_accounts</span>
+</div>
+</div>
+<div class="relative z-10 p-8 h-full flex flex-col justify-end bg-transparent">
+<div class="inline-flex items-center gap-2 bg-primary/90 backdrop-blur-sm px-3 py-1.5 rounded-lg mb-3 shadow-lg w-fit">
+<span class="material-symbols-outlined text-white text-sm">priority_high</span>
+<span class="text-xs font-bold text-white uppercase">嚴重影響</span>
+</div>
+<h4 class="text-xl font-bold text-white mb-2">技術影響</h4>
+<p class="text-sm text-slate-800 dark:text-white ">
+                                攻擊者可以冒充使用者或管理員。技術影響包括未經授權的信息披露、修改或破壞數據。
+                            </p>
+</div>
+</div>
+<div class="bg-transparent border border-[#233648] rounded-2xl p-6">
+<h4 class=" text-slate-800 dark:text-slate-100 font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-800 dark:text-slate-100 ">query_stats</span>
+                        漏洞統計
+                    </h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between text-sm border-b border-[#233648] pb-3">
+<span class="text-slate-800 dark:text-slate-100 dark:text-slate-400">OWASP 排名</span>
+<span class="text-primary font-mono font-bold">#1 (Top 10)</span>
+</div>
+<div class="flex items-center justify-between text-sm border-b border-[#233648] pb-3">
+<span class="text-slate-800 dark:text-slate-100 dark:text-slate-400">測試普及率</span>
+<span class="text-orange-400 font-mono font-bold">94% of Apps</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-800  dark:text-slate-100 dark:text-slate-400">可利用性</span>
+<span class="text-red-400 font-mono font-bold">簡單</span>
+</div>
+</div>
+<p class="text-xs text-slate-600 mt-4 text-right">Source: OWASP Top 10 2021</p>
+</div>
+</div>
+</div>
+<div class="mb-12">
+<h3 class="text-2xl  font-bold text-slate-800 dark:text-slate-100 mb-8 text-center">預防 &amp; 緩解</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-transparent border border-[#233648] rounded-xl p-6 hover:border-primary/50 transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-20 h-20 bg-blue-500/5 rounded-bl-full"></div>
+<div class="h-12 w-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-secondary mb-4 group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">block</span>
+</div>
+<h4 class="text-lg  font-bold text-slate-800 dark:text-slate-100 mb-2">默認拒絕</h4>
+<p class="text-sm text-slate-400 leading-relaxed">
+                        存取控制機制應集中實作一次，並在整個應用程式中重複使用；預設情況下應拒絕所有存取。
+                    </p>
+</div>
+<div class="bg-transparent border border-[#233648] rounded-xl p-6 hover:border-primary/50 transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-bl-full"></div>
+<div class="h-12 w-12 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">dns</span>
+</div>
+<h4 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">模型存取控制</h4>
+<p class="text-sm text-slate-400 leading-relaxed">
+                        系統必須強制檢查每筆資料的擁有權，不得允許使用者對非其所屬的記錄進行建立、讀取、更新或刪除。
+                    </p>
+</div>
+<div class="bg-transparent border border-[#233648] rounded-xl p-6 hover:border-primary/50 transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-20 h-20 bg-green-500/5 rounded-bl-full"></div>
+<div class="h-12 w-12 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500 mb-4 group-hover:bg-green-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">verified_user</span>
+</div>
+<h4 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">伺服器端驗證</h4>
+<p class="text-sm text-slate-400 leading-relaxed">
+                        不要依賴客戶端驗證。攻擊者可以修改請求（URL、標頭、Cookie）來繞過用戶界面檢查。
+                    </p>
+</div>
+</div>
+</div>
+<div class="rounded-2xl bg-gradient-to-r from-primary/20 bg-transparent border border-primary/30 p-8 md:p-12 text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+<div class="relative z-10">
+<h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4">學習路徑</h3>
+<p class="text-slate-700 dark:text-white max-w-2xl mx-auto mb-8">
+                    Broken Access Control 是首要風險。了解 SQL 注入，攻擊者如何干擾資料庫查詢。
+                </p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="h-12 px-6 rounded-lg bg-primary text-white font-bold text-sm hover:bg-red-600 transition-all flex items-center gap-2" onclick="window.location.href='SQL Injection.html'">
+<span>下一個：SQL 注入</span>
+<span class="material-symbols-outlined text-lg"> arrow_forward</a></span>
+</button>
+<button class="h-12 px-6 rounded-lg border border-[#324d67] bg-surface-dark text-white font-medium text-sm hover:bg-[#233648] transition-all" onclick="window.location.href='OWASP.html'">
+                        查看完整 OWASP Top 10
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-[#233648] bg-[#111a22] py-8 mt-auto">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500">verified_user</span>
+<p class="text-sm text-slate-500">© 2025 此網站屬於 319123 施英彥</p>
+</div>
+<div class="flex gap-6">
+<a class="text-sm text-slate-400 hover:text-white" href="#">隱私政策</a>
+<a class="text-sm text-slate-400 hover:text-white" href="#">服務條款</a>
+<a class="text-sm text-slate-400 hover:text-white" href="#">Cookie 設定</a>
+</div>
+</div>
+</footer>
+<script>
+// Theme toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check for saved theme preference or default to dark mode
+    if (localStorage.theme === 'light') {
+        html.classList.remove('dark');
+        themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-xl">light_mode</span>';
+    } else if (localStorage.theme === 'dark' || !('theme' in localStorage)) {
+        html.classList.add('dark');
+        themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-xl">dark_mode</span>';
+    }
+
+    // Toggle theme on button click
+    themeToggleBtn.addEventListener('click', () => {
+        html.classList.toggle('dark');
+
+        if (html.classList.contains('dark')) {
+            localStorage.theme = 'dark';
+            themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-xl">dark_mode</span>';
+        } else {
+            localStorage.theme = 'light';
+            themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-xl">light_mode</span>';
+        }
+    });
+});
+</script>
+</body></html>
